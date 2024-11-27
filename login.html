@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <title>用户登录</title>
+  <link href="https://coscdn.htmlpage.cn/html-template/assets/css/page.min.css" rel="stylesheet" />
+  <link href="https://coscdn.htmlpage.cn/html-template/assets/css/style.css" rel="stylesheet" />
+  <link rel="apple-touch-icon" href="https://coscdn.htmlpage.cn/html-template/assets/img/apple-touch-icon.png" />
+  <link rel="icon" href="https://coscdn.htmlpage.cn/html-template/assets/img/favicon.png" />
+  <style>
+    /* 全局样式 */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Jhenghei", sans-serif;
+    }
+
+  .logo path {
+      pointer-events: none;
+      fill: none;
+      stroke-linecap: round;
+      stroke-width: 7;
+      stroke: rgb(255, 255, 255);
+    }
+
+  .wechat-group img {
+      max-width: 220px;
+      height: auto;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-bottom-left-radius: 8px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+  .welcome-img img {
+      width: 100%;
+    }
+
+    [data-aos] {
+      opacity: 1!important;
+      transform: translate(0px) scale(1)!important;
+    }
+
+    body > div#blockbyte-bs-indicator > div {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      transform: translate3d(-24px, 0px, 0px);
+      top: 0px;
+      left: 0px;
+      height: 100%;
+      background-image: initial;
+      background-position-x: initial;
+      background-position-y: initial;
+      background-size: initial;
+      background-repeat: initial;
+      background-attachment: initial;
+      background-origin: initial;
+      background-clip: initial;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-top-left-radius: 0px;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 0px;
+      transition-behavior: normal, normal;
+      transition-duration: 0.3s, 0.3s;
+      transition-timing-function: ease, ease;
+      transition-delay: 0s, 0s;
+      transition-property: opacity, transform;
+      z-index: 2;
+      width: 24px!important;
+    }
+
+    body > iframe#blockbyte-bs-sidebar.blockbyte-bs-visible,
+    body > iframe#blockbyte-bs-overlay.blockbyte-bs-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    body.blockbyte-bs-noscroll {
+      overflow-x: hidden!important;
+      overflow-y: hidden!important;
+    }
+
+    body > div#blockbyte-bs-indicator > div > span {
+      -webkit-mask-position-x: center;
+      -webkit-mask-position-y: center;
+      mask-size: 24px;
+      mask-repeat: no-repeat;
+      mask-origin: border-box;
+      mask-clip: border-box;
+      mask-composite: add;
+      mask-mode: match-source;
+      mask-image: url("chrome-extension://jdbnofccmhefkmjbkkdkfiicjkgofkdh/img/icon-bookmark.svg");
+      background-color: rgb(255, 255, 255);
+      position: absolute;
+      display: block;
+      top: 0px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+    }
+
+    body > div#blockbyte-bs-indicator[data-pos="right"] {
+      left: auto;
+      right: 0px;
+    }
+
+    body > div#blockbyte-bs-indicator[data-pos="right"] > div {
+      transform: translate3d(24px, 0px, 0px);
+      left: auto;
+      right: 0px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 10px;
+    }
+
+    body > div#blockbyte-bs-indicator.blockbyte-bs-fullHeight > div {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+
+    body > div#blockbyte-bs-indicator.blockbyte-bs-hover > div {
+      transform: translate3d(0px, 0px, 0px);
+      opacity: 1;
+    }
+
+    body > div#blockbyte-bs-indicator[data-pos="left"].blockbyte-bs-has-lsb {
+      height: 100%!important;
+      top: 0px!important;
+    }
+
+    body > div#blockbyte-bs-indicator[data-pos="left"].blockbyte-bs-has-lsb > div {
+      background-image: initial;
+      background-position-x: initial;
+      background-position-y: initial;
+      background-size: initial;
+      background-repeat: initial;
+      background-attachment: initial;
+      background-origin: initial;
+      background-clip: initial;
+      background-color: transparent;
+    }
+
+    body > div#blockbyte-bs-indicator[data-pos="left"].blockbyte-bs-has-lsb > div > span {
+      -webkit-mask-position-y: 20px;
+    }
+
+    body > iframe#blockbyte-bs-sidebar {
+      width: 350px;
+      max-width: none;
+      height: 0px;
+      z-index: 2147483646;
+      speak: none;
+      border-top-width: initial;
+      border-right-width: initial;
+      border-bottom-width: initial;
+      border-left-width: initial;
+      border-top-style: none;
+      border-right-style: none;
+      border-bottom-style: none;
+      border-left-style: none;
+      border-top-color: initial;
+      border-right-color: initial;
+      border-bottom-color: initial;
+      border-left-color: initial;
+      border-image-source: initial;
+      border-image-slice: initial;
+      border-image-width: initial;
+      border-image-outset: initial;
+      border-image-repeat: initial;
+      transform: translate3d(-350px, 0px, 0px);
+      transition-behavior: normal, normal, normal, normal;
+      transition-duration: 0s, 0s, 0.3s, 0.3s;
+      transition-timing-function: ease, ease, ease, ease;
+      transition-delay: 0.3s, 0.3s, 0s, 0s;
+      transition-property: width, height, opacity, transform;
+      background-color: rgba(255, 255, 255, 0.8)!important;
+      display: block!important;
+    }
+
+    body > iframe#blockbyte-bs-sidebar[data-pos="right"] {
+      left: auto;
+      right: 0px;
+      transform: translate3d(350px, 0px, 0px);
+    }
+
+    body > iframe#blockbyte-bs-sidebar.blockbyte-bs-visible {
+      width: calc(100% + 350px);
+      height: 100%;
+      transform: translate3d(0px, 0px, 0px);
+      transition-behavior: normal, normal;
+      transition-duration: 0.3s, 0.3s;
+      transition-timing-function: ease, ease;
+      transition-delay: 0s, 0s;
+      transition-property: opacity, transform;
+    }
+
+    body > iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask {
+      background-image: none!important;
+      background-position-x: initial!important;
+      background-position-y: initial!important;
+      background-size: initial!important;
+      background-repeat: initial!important;
+      background-attachment: initial!important;
+      background-origin: initial!important;
+      background-clip: initial!important;
+      background-color: initial!important;
+    }
+
+    body > iframe#blockbyte-bs-sidebar.blockbyte-bs-hideMask:not(.blockbyte-bs-hover) {
+      width: calc(400px);
+    }
+
+    body > iframe#blockbyte-bs-overlay {
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      z-index: 2147483647;
+      border-top-width: initial;
+      border-right-width: initial;
+      border-bottom-width: initial;
+      border-left-width: initial;
+      border-top-style: none;
+      border-right-style: none;
+      border-bottom-style: none;
+      border-left-style: none;
+      border-top-color: initial;
+      border-right-color: initial;
+      border-bottom-color: initial;
+      border-left-color: initial;
+      border-image-source: initial;
+      border-image-slice: initial;
+      border-image-width: initial;
+      border-image-outset: initial;
+      border-image-repeat: initial;
+      speak: none;
+      transition-behavior: normal;
+      transition-duration: 0.3s;
+      transition-timing-function: ease;
+      transition-delay: 0s;
+      transition-property: opacity;
+      background-image: initial!important;
+      background-position-x: initial!important;
+      background-position-y: initial!important;
+      background-size: initial!important;
+      background-repeat: initial!important;
+      background-attachment: initial!important;
+      background-origin: initial!important;
+      background-clip: initial!important;
+      background-color: rgba(0, 0, 0, 0.5)!important;
+    }
+
+  .c7857 {
+      display: none;
+    }
+
+  .c7873 {
+      height: 100vh;
+      padding-top: 60px;
+    }
+
+  .c7848 {
+      background: url('https://coscdn.htmlpage.cn/html-template/assets/img/bg/4.jpg') no-repeat right center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="i9viu" class="bg-main-img c7848">
+    <img src="https://coscdn.htmlpage.cn/html-template/assets/img/bg/4.jpg" class="c7857" />
+    <!-- Main Content -->
+    <main id="i5jay" class="main-content c7873">
+      <div class="bg-white rounded shadow-7 w-400 mw-100 p-6 mx-auto">
+        <h5 class="mb-7">用户登录</h5>
+        <form>
+          <div class="form-group">
+            <input type="text" name="username" placeholder="用户名" class="form-control" />
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" placeholder="密码" class="form-control" />
+          </div>
+          <div class="form-group flexbox py-3">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" checked class="custom-control-input" />
+              <label class="custom-control-label">记住</label>
+            </div>
+            <a href="login.html" class="text-muted small-2">忘记密码？</a>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-block btn-primary">登录</button>
+          </div>
+        </form>
+        <div class="divider">社交媒体登录</div>
+        <div class="text-center">
+          <a href="#" class="btn btn-circle btn-sm btn-facebook mr-2"><i class="fa fa-facebook"></i></a>
+          <a href="#" class="btn btn-circle btn-sm btn-google mr-2"><i class="fa fa-google"></i></a>
+          <a href="#" class="btn btn-circle btn-sm btn-twitter"><i class="fa fa-twitter"></i></a>
+        </div>
+        <hr class="w-30" />
+        <p class="text-center text-muted small-2">您还没有账号？
+          <a href="login.html">立即注册</a>
+        </p>
+      </div>
+    </main>
+    <!-- /.main-content -->
+  </div>
+  <!-- Scripts -->
+  <script src="https://coscdn.htmlpage.cn/html-template/assets/js/page.min.js"></script>
+  <script src="https://coscdn.htmlpage.cn/html-template/assets/js/script.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('form');
+      const usernameInput = document.querySelector('input[name="username"]');
+      const passwordInput = document.querySelector('input[name="password"]');
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault(); // 阻止表单默认提交行为
+
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+
+        if (username === '123' && password === '123') {
+          window.location.href = 'index.html';
+        } else {
+          alert('账号或密码错误');
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
